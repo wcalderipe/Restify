@@ -3,18 +3,21 @@
 // TODO: Read more about Router::connectNamed method
 
 Router::connect(
-	'/api/:controller',
+	'/api/:version/:controller',
 	array(
 		'prefix' => 'api',
 		'api' => true,
 		'ext' => 'json',
 		'action' => 'index',
 		'[method]' => 'GET',
+	),
+	array(
+		'pass' => 'version'
 	)
 );
 
 Router::connect(
-	'/api/:controller/:id',
+	'/api/:version/:controller/:id',
 	array(
 		'prefix' => 'api',
 		'api' => true,
@@ -23,23 +26,29 @@ Router::connect(
 		'[method]' => 'GET',
 	),
 	array(
-		'pass' => array('id')
+		'pass' => array(
+			'id',
+			'version'
+		)
 	)
 );
 
 Router::connect(
-	'/api/:controller',
+	'/api/:version/:controller',
 	array(
 		'prefix' => 'api',
 		'api' => true,
 		'ext' => 'json',
 		'action' => 'add',
 		'[method]' => 'POST',
+	),
+	array(
+		'pass' => 'version'
 	)
 );
 
 Router::connect(
-	'/api/:controller/:id',
+	'/api/:version/:controller/:id',
 	array(
 		'prefix' => 'api',
 		'api' => true,
@@ -48,12 +57,15 @@ Router::connect(
 		'[method]' => 'PUT',
 	),
 	array(
-		'pass' => array('id')
+		'pass' => array(
+			'id',
+			'version'
+		)
 	)
 );
 
 Router::connect(
-	'/api/:controller/:id',
+	'/api/:version/:controller/:id',
 	array(
 		'prefix' => 'api',
 		'api' => true,
@@ -62,6 +74,9 @@ Router::connect(
 		'[method]' => 'DELETE',
 	),
 	array(
-		'pass' => array('id')
+		'pass' => array(
+			'id',
+			'version'
+		)
 	)
 );
