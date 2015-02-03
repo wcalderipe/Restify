@@ -1,0 +1,16 @@
+{
+	"name": "wcalderipe/restify",
+	"type": "cakephp-plugin",
+	"description": "Rest tool for CakePHP >=2.4.0",
+	"keywords": ["cakephp", "rest", "api"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "William Calderipe",
+			"email": "wcalderipe@gmail.com"
+		}
+	],
+	"require": {
+		"composer/installers": "*"
+	}
+}
