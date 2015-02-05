@@ -8,6 +8,8 @@ Configure::write('Restify.apiQueryParams', array(
 	'token'
 ));
 
+Configure::write('Exception.renderer', 'Restify.RestifyExceptionRenderer');
+
 // Preload all exceptions
 $exceptionFolder = APP . 'Plugin' . DS . 'Restify' . DS . 'Lib' . DS . 'Exception' . DS;
 foreach (new \DirectoryIterator($exceptionFolder) as $fileInfo) {
