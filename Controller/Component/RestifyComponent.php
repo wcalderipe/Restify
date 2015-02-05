@@ -35,8 +35,9 @@ class RestifyComponent extends Component {
 			Configure::read('Restify.versions') : array();
 
 		if (!in_array($params['version'], $availableVersions)) {
-			// TODO: Change to a custom exception
-			throw new RuntimeException('Not supported API version');
+			throw new RestifyNotSupportedVersionException(
+				"Version {$params['version']} is not supported"
+			);
 		}
 
 		$versionInfo = RestifyVersion::getVersionInfoFromRequestParams($params);
@@ -46,8 +47,9 @@ class RestifyComponent extends Component {
 			if (method_exists($this->controller, $versionInfo['downgradeAction'])) {
 				$this->controller->request->params['action'] = $versionInfo['downgradeAction'];
 			} else {
-				// TODO: Change to a custom exception
-				throw new RuntimeException("Action does not exists");
+				throw new RestifyInvalidActionException(
+					"The action {$versionInfo['downgradeAction']} was not found"
+				);
 			}
 		}
 	}
